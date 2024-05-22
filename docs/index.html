@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniDB Documentation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+        }
+
+        .content {
+            flex: 3;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Documentation</h2>
+            <ul>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#get-started">How to get started</a></li>
+                <li><a href="#initialize">Initialize</a></li>
+                <li><a href="#set">Set</a></li>
+                <li><a href="#get">Get</a></li>
+                <li><a href="#update">Update</a></li>
+                <li><a href="#remove">Remove</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <!-- Add more sections as needed -->
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Welcome to MiniDB Documentation</h1>
+            <section id="installation">
+                <h2>Installation</h2>
+                <p>Once you have installed MiniDB from its official <a href="https://github.com/deadoverflow-git/MiniDB">github</a> page, it is time to install the dependencies:</p>
+                <pre><code>npm install package.json</code></pre>
+            </section>
+            <section id="get-started">
+                <h2>How to get started</h2>
+                <p>To get started with MiniDB, simply import it in your project. Make sure that the MiniDB folder is in the exact same directory as your project:</p>
+                <pre><code>// Import MiniDB
+const {MiniDB} = require('MiniDB');
+
+//Create new db instance for `test_table`
+const db = new MiniDB('test_table');
+</code></pre>
+            </section>
+            <section id="initialize">
+                <h2>Function initialize()</h2>
+                <p>Initialize funtion is used to create the table into the db after the new DB instance has been created. It must be called before doing any operations on the db!</p>
+                <pre><code>
+ //Create `test_table` table in the database.
+ db.initialize();
+                </code></pre>
+            </section>
+            <section id="set">
+                <h2>Function set()</h2>
+                <p>Set function is really easy to understand, it takes <strong>key</strong> and <strong>value</strong> as parameters and then stores them in the database.</p>
+                <pre><code>
+ //Create `test` key in database with value `1234` attached to it.
+ db.set('test', 1234);
+                </code></pre>
+            </section>
+            <section id="get">
+                <h2>Function get()</h2>
+                <p>Get function is important when it comes to reading what's behind a certain key. This function simply takes <strong>key</strong> as parameter and returns, if the key exists, <strong>value</strong> as a promise. In case the key doesn't exist, this function returns <strong>undefined</strong>.</p>
+                <pre><code>
+ //Return whatever is behind key `test`.
+ db.get('test').then(resp => console.log(resp));
+                </code></pre>
+                <p>Output:</p>
+                <pre><code>
+1234
+                                   </code></pre>
+            </section>
+            <section id="update">
+                <h2>Function update()</h2>
+                <p>Function update takes two parameters and, as the name suggests, this function updates the value that is behind a certain key. First parameter is <strong>key</strong> that you want to have it's value updated and the second parameter is <strong>new value</strong> that will replace the old one.</p>
+                <pre><code>
+ //Update value behind key `test` from `1234` to `12345`
+ db.update('test', 12345);
+                </code></pre>
+            </section>
+            <section id="remove">
+                <h2>Function remove()</h2>
+                <p>Function remove takes only one parameter which is <strong>key</strong> and it pretty much deletes that key including it's <strong>value</strong> forever.</p>
+                <pre><code>
+ //Removes key `test` along with it's value `12345` from table `test_table`
+ db.remove('test');
+                </code></pre>
+            </section>
+            <section id="troubleshooting">
+                <h2>Troubleshooting</h2>
+                <p>In case you have any issues or errors that you don't know how to solve regarding <strong>MiniDB</strong>, you can create a new issue on MiniDB's official <a href="https://github.com/deadoverflow-git/MiniDB">github</a> page and or contact me via <a href="https://instagram.com/deadoverflow">Instagram</a> or <a href="mailto:ihusanovic3@gmail.com">Mail</a></p>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
