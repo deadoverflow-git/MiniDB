@@ -56,3 +56,22 @@ db.remove('test');
 ```
 ## Important Note
 Make sure to call initialize() function after creating a new MiniDB instance to create the necessary table in the database.
+
+
+## Example Usage
+```javascript
+const {MiniDB} = require('MiniDB');
+
+const db = new MiniDB('test_table');
+
+db.initialize();
+
+db.set('test', 1234);
+
+db.get('test').then(resp => console.log(resp));
+
+db.update('test', 12345);
+
+db.remove('test');
+```
+This summarizes the basic functionalities of MiniDB. For more details, refer to the code comments and documentation.
