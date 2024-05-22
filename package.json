@@ -1,0 +1,14 @@
+{
+  "name": "minidb",
+  "version": "1.0.0",
+  "description": "Smol DB",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "deadoverflow",
+  "license": "ISC",
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}
